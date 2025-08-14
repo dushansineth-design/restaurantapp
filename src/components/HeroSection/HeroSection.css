@@ -1,0 +1,145 @@
+/* HeroSection.css */
+.hero-section {
+  position: relative;
+  min-height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+
+  /* Animated background with parallax feel */
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+              url('../../assets/pic9.jpg') center/cover no-repeat;
+  animation: bgZoom 15s ease-in-out infinite alternate;
+  overflow: hidden;
+}
+
+/* Animated gradient overlay (extra flair) */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(200, 134, 42, 0.096),  /* Gold */
+    rgba(161, 94, 0, 0.11),   /* Dark Gold */
+    rgb(0, 0, 0)       /* Black tint */
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+  z-index: 1;
+}
+
+/* Hero content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 1rem;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* Heading with cinematic reveal */
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  opacity: 0;
+  animation: slideInFromBottom 1.2s ease forwards 0.3s;
+}
+
+/* Paragraph animation */
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #FFFFFF;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.6s;
+}
+
+/* Buttons container */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.9s;
+}
+
+/* Button styles */
+.btn {
+  background: linear-gradient(45deg, #C8872A, #A15F00);
+  color: #FFFFFF;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 20px rgba(200, 135, 42, 0.5);
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(200, 135, 42, 0.7);
+}
+
+/* Outline button */
+.btn-outline {
+  background: transparent;
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: #FFFFFF;
+  color: #A15F00;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes bgZoom {
+  0% { background-size: 100% 100%; }
+  100% { background-size: 110% 110%; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromBottom {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}

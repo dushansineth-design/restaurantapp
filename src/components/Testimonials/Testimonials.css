@@ -1,0 +1,48 @@
+/* Add to main.css */
+
+.testimonials-section {
+  background: #000000; /* Full black background */
+  padding: 60px 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.05); /* Semi-transparent for contrast */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff; /* White text */
+}
+
+.testimonial-content {
+  margin-bottom: 20px;
+  font-style: italic;
+  position: relative;
+  color: #f1f1f1;
+}
+
+.testimonial-content::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary-color);
+  opacity: 0.3;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+}
+
+.testimonial-author {
+  text-align: right;
+  font-weight: 600;
+  color: var(--primary-color);
+}

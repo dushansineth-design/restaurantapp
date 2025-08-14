@@ -1,0 +1,5 @@
+/* styles/Home.css */
+.home-page {
+  padding-top: 70px; /* To account for fixed header */
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+}
