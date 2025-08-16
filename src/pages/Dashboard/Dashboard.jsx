@@ -4,7 +4,7 @@ import './Dashboard.css';
 const Dashboard = () => {
   return (
     <div className="dashboard-page">
-      <div className="container">
+      <div className="container-dash">
         <div className="dashboard-header">
           <h1>DINEX</h1>
           <h2>DASHBOARD</h2>
