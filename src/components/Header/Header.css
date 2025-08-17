@@ -1,22 +1,24 @@
-/* Header.css */
-
-/* General Header Styles - Glass Effect (Works on Light & Dark backgrounds) */
 .header {
-  background: rgba(40, 40, 40, 0.2); /* Slight dark tint so it’s visible on white */
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.8rem 0;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Hover effect */
-.header:hover {
-  background: rgba(40, 40, 40, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+/* Visible/Hidden States */
+.header.visible {
+  transform: translateY(0);
+}
+
+.header.hidden {
+  transform: translateY(-100%);
 }
 
 /* Container */
@@ -33,113 +35,222 @@
   align-items: center;
 }
 
-/* Logo */
+/* Logo - Enhanced */
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 800;
   text-decoration: none;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.1);
-  color: #ffdde1;
-}
-
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  gap: 5rem;
-}
-
-.nav-link {
-  color: #C8872A;
-  font-size: 1.3rem;
-  font-weight: 500;
-  text-decoration: none;
+  letter-spacing: 1px;
   position: relative;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  padding: 0rem 0;
+
+  /* Stronger shiny gradient */
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #949494 25%,
+    #ffffff 50%,
+    #949494 75%,
+    #ffffff 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 2s linear infinite;
 }
 
-.nav-link::after {
-  content: "";
+/* Underline hover */
+.logo::after {
+  content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
-  width: 0%;
+  width: 0;
   height: 2px;
-  background: #fff;
-  transition: width 0.3s ease;
+  background: #ffea00;
+  transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.nav-link:hover {
-  color: #ffdde1;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-}
-
-.nav-link:hover::after {
+.logo:hover::after {
   width: 100%;
 }
 
-/* Button Link */
-.nav-link.btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: #C8872A;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-weight: bold;
-  backdrop-filter: blur(5px);
+@keyframes shineText {
+  0% {
+    background-position: -300% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}
+
+
+
+/* Navigation Links - Enhanced Animations */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.5rem 0;
   transition: all 0.3s ease;
+  overflow: hidden;
+  margin: 0 2rem;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff8a00, #b38300);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-link:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Button Link - Enhanced */
+.nav-link.btn {
+  position: relative;
+  background: linear-gradient(135deg, #ff8a00, #b38300);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.nav-link.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #b38300, #ff8a00);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
 }
 
 .nav-link.btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-  color: #000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
 }
 
-/* Hamburger Menu (Mobile) */
+.nav-link.btn:hover::before {
+  opacity: 1;
+}
+
+.nav-link.btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hamburger Menu - Enhanced */
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
 }
 
 .hamburger span {
-  width: 25px;
+  display: block;
+  width: 28px;
   height: 3px;
   background: #fff;
-  border-radius: 2px;
-  transition: 0.3s;
+  margin: 5px 0;
+  transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  transform-origin: center;
 }
 
-/* Mobile View */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .nav-links {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
     right: 0;
-    background: rgba(30, 30, 30, 0.85);
-    backdrop-filter: blur(15px);
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.98);
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    justify-content: center;
+    gap: 2.5rem;
+    clip-path: circle(0% at 90% 5%);
+    transition: clip-path 0.8s ease;
+    z-index: 1000;
   }
 
   .nav-links.active {
-    max-height: 300px;
+    clip-path: circle(150% at 90% 5%);
+  }
+
+  .nav-link {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease, opacity 0.4s ease;
+  }
+
+  .nav-links.active .nav-link {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(0.1s * var(--i));
+  }
+
+  .nav-link.btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
   }
 
   .hamburger {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background: #ff8a00;
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background: #e52e71;
   }
 }
+
+/* Add this to your Header.jsx for the mobile menu animation delays */
+/* Add this to your nav-link mapping:
+style={{ '--i': index }}
+*/
