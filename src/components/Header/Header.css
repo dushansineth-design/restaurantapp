@@ -13,13 +13,13 @@
 }
 
 /* Visible/Hidden States */
-.header.visible {
+/*.header.visible {
   transform: translateY(0);
 }
 
 .header.hidden {
   transform: translateY(-100%);
-}
+}*/
 
 /* Container */
 .container {
