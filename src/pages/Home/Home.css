@@ -1,5 +1,12 @@
 /* styles/Home.css */
 .home-page {
   padding-top: 70px; /* To account for fixed header */
-  background: linear-gradient(135deg, #000000, #1a1a1a);
+  background: rgb(255, 255, 255)
+}
+
+.section-divider {
+  border: none;
+  height: 2px;
+  background-color: #0000003f; /* black line */
+  margin: 60px; /* optional spacing */
 }

@@ -21,7 +21,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="testimonials section-padding" style={{ backgroundColor: '#000000ff' }}>
+    <section className="testimonials section">
       <div className="container">
         <h2 className="section-title">What Our Guests Say</h2>
         <div className="testimonials-grid">

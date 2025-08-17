@@ -10,7 +10,9 @@ const Home = () => {
     <div className="home-page">
       <HeroSection />
       <MenuPreview />
+       <hr className="section-divider" />
       <Testimonials />
+       <hr className="section-divider" />
       <ReservationSteps />
     </div>
   );

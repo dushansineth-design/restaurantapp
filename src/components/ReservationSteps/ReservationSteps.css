@@ -1,6 +1,6 @@
 /* ReservationSteps.css */
 .reservation-steps {
-  background: linear-gradient(135deg, #000000, #1a1a1a);
+  background: linear-gradient(135deg, #ffffff, #ffffff);
   padding: 4rem 0;
   color: #ffffff;
   position: relative;
@@ -28,17 +28,28 @@
 
 /* Step cards */
 .step {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.15); /* translucent white */
+  backdrop-filter: blur(12px);            /* frosted glass blur */
+  -webkit-backdrop-filter: blur(12px);    /* Safari support */
+  
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
   position: relative;
-  border: 1px solid rgba(200, 135, 42, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25); /* light border */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);   /* subtle depth */
+
   transition: all 0.4s ease;
   transform: translateY(40px);
   opacity: 0;
   animation: fadeUp 1s ease forwards;
 }
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3); /* stronger shadow on hover */
+}
+
 
 .step:nth-child(1) { animation-delay: 0.3s; }
 .step:nth-child(2) { animation-delay: 0.5s; }
@@ -46,7 +57,7 @@
 
 .step:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(200, 135, 42, 0.4);
+  box-shadow: 0 10px 30px rgb(255, 149, 0);
   background: rgba(200, 135, 42, 0.1);
 }
 
@@ -55,7 +66,7 @@
   width: 60px;
   height: 60px;
   margin: 0 auto 1rem;
-  background: linear-gradient(135deg, #C8872A, #A15F00);
+  background: linear-gradient(135deg, #C8872A, #ff9500);
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
@@ -70,11 +81,11 @@
 .step h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .step p {
-  color: #dcdcdc;
+  color: #000000;
   font-size: 0.95rem;
   line-height: 1.5;
 }
