@@ -1,8 +1,5 @@
-/* Footer.css */
-
-/* General Footer Styles */
 .footer {
-  background-color: #222; /* dark background */
+  background-color: #222; 
   color: #fff;
   padding: 20px 0;
   font-family: 'Poppins', sans-serif;
@@ -10,7 +7,6 @@
   overflow: hidden;
 }
 
-/* Fade-in Animation for the whole footer */
 .footer {
   opacity: 0;
   animation: fadeInFooter 1.5s forwards;
@@ -33,7 +29,6 @@
   gap: 20px;
 }
 
-/* Section Styling with subtle slide-up animation */
 .footer-section {
   flex: 1;
   min-width: 200px;
@@ -68,7 +63,6 @@
   position: relative;
 }
 
-/* Animated underline on hover */
 .footer-section h3::after {
   content: '';
   position: absolute;
@@ -111,7 +105,6 @@
   transform: translateX(5px);
 }
 
-/* Social Icons */
 .social-icons {
   display: flex;
   gap: 10px;
@@ -129,7 +122,6 @@
   transform: scale(1.2) rotate(10deg);
 }
 
-/* Footer Bottom */
 .footer-bottom {
   text-align: center;
   margin-top: 20px;
@@ -140,7 +132,6 @@
   animation-delay: 1.2s;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;

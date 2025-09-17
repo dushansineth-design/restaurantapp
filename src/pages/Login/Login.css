@@ -1,6 +1,3 @@
-/* Login.css */
-
-/* Full page background */
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -11,7 +8,6 @@
   overflow: hidden;
 }
 
-/* Dark overlay for readability */
 .login-page::before {
   content: "";
   position: absolute;
@@ -21,7 +17,6 @@
   z-index: 0;
 }
 
-/* Glass Effect Container */
 .login-container {
   position: relative;
   z-index: 1;
@@ -48,7 +43,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Form Groups */
 .login-form .form-group {
   margin-bottom: 1.3rem;
   text-align: left;
@@ -61,7 +55,6 @@
   display: block;
 }
 
-/* Make inputs and button aligned */
 .login-form input,
 .login-btn {
   width: 100%;
@@ -74,7 +67,6 @@
   box-sizing: border-box;
 }
 
-/* Input fields */
 .login-form input {
   margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.18);
@@ -87,7 +79,6 @@
   box-shadow: 0 0 10px rgba(229, 46, 113, 0.6);
 }
 
-/* Button */
 .login-btn {
   margin-top: 0.5rem;
   background: linear-gradient(135deg, #ff8a00, rgba(255, 106, 0, 0.3));
@@ -102,7 +93,6 @@
   box-shadow: 0 0 15px rgba(229, 46, 113, 0.8);
 }
 
-/* Links */
 .login-links {
   margin-top: 1.2rem;
   display: flex;
@@ -120,7 +110,6 @@
   color: #ff8a00;
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;

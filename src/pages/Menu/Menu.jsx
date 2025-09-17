@@ -1,5 +1,5 @@
-// pages/Menu.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import MenuItem from '../../components/MenuItem/MenuItem.jsx';
 import './Menu.css';
 
@@ -13,17 +13,120 @@ import cheesePizza from '../../assets/pic5.jpg';
 const Menu = () => {
   const [cart, setCart] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [foodItems, setFoodItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const menuItems = [
-    { id: 1, name: 'GRILLED CHICKEN', image: grilledChicken, price: 8.33 ,description: 'Juicy grilled chicken with special herbs' },
-    { id: 2, name: 'BUTTER PRAWNS', image: butterPrawns, price: 10.11 ,description: 'Fresh prawns cooked in rich butter sauce' },
-    { id: 3, name: 'SPICY GARLIC RAMEN', image: spicyRamen, price: 15.67 ,description: 'Authentic ramen with spicy garlic broth'},
-    { id: 4, name: 'CRISPY CHICKEN', image: crispyChicken, price: 9.58 ,description: 'Golden crispy chicken with dipping sauce' },
-    { id: 5, name: 'CREAMY PASTA', image: creamyPasta, price: 12.43 ,description: 'Pasta in our signature creamy sauce' },
-    { id: 6, name: 'CHEESE PIZZA', image: cheesePizza, price: 11.95 ,description: 'Classic pizza with three cheese blend' },
+  const fallbackMenuItems = [
+    { 
+      id: 1, 
+      name: 'GRILLED CHICKEN', 
+      description: 'Juicy grilled chicken with special herbs', 
+      price: 8.33,
+      imageUrl: grilledChicken
+    },
+    { 
+      id: 2, 
+      name: 'BUTTER PRAWNS', 
+      description: 'Fresh prawns cooked in rich butter sauce', 
+      price: 10.11,
+      imageUrl: butterPrawns
+    },
+    { 
+      id: 3, 
+      name: 'SPICY GARLIC RAMEN', 
+      description: 'Authentic ramen with spicy garlic broth', 
+      price: 15.67,
+      imageUrl: spicyRamen
+    },
+    { 
+      id: 4, 
+      name: 'CRISPY CHICKEN', 
+      description: 'Golden crispy chicken with dipping sauce', 
+      price: 9.58,
+      imageUrl: crispyChicken
+    },
+    { 
+      id: 5, 
+      name: 'CREAMY PASTA', 
+      description: 'Pasta in our signature creamy sauce', 
+      price: 12.43,
+      imageUrl: creamyPasta
+    },
+    { 
+      id: 6, 
+      name: 'CHEESE PIZZA', 
+      description: 'Classic pizza with three cheese blend', 
+      price: 11.95,
+      imageUrl: cheesePizza
+    },
   ];
 
-  const filteredItems = menuItems.filter(item =>
+  useEffect(() => {
+    fetchFoodItems();
+    checkLoginStatus();
+  }, []);
+
+  const checkLoginStatus = () => {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    setIsLoggedIn(!!(token && user));
+  };
+
+  const fetchFoodItems = async () => {
+    try {
+      setLoading(true);
+      
+      try {
+        const API_URL = 'http://localhost:8080/api/food-items';
+        const response = await fetch(API_URL, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        console.log("API response status:", response.status);
+        
+        if (response.ok) {
+          const items = await response.json();
+          console.log("API response data:", items);
+          
+          const processedItems = items.map(item => ({
+            id: item.id,
+            name: item.name || 'Unknown Item',
+            description: item.description || 'No description available',
+            price: typeof item.price === 'number' ? item.price : 
+                  typeof item.price === 'string' ? parseFloat(item.price) : 0,
+            imageUrl: item.imageUrl ? `http://localhost:8080${item.imageUrl}` : fallbackMenuItems[0].imageUrl,
+            category: item.category || 'Uncategorized',
+            isAvailable: item.isAvailable !== undefined ? item.isAvailable : true
+          }));
+          
+          if (Array.isArray(processedItems) && processedItems.length > 0) {
+            setFoodItems(processedItems);
+          } else {
+            console.log("API returned empty array, using fallback data");
+            setFoodItems(fallbackMenuItems);
+          }
+        } else {
+          console.error("API returned error status:", response.status);
+          throw new Error(`API error: ${response.status}`);
+        }
+      } catch (apiError) {
+        console.error('API fetch failed, using fallback data:', apiError);
+        setFoodItems(fallbackMenuItems);
+      }
+    } catch (err) {
+      console.error('Error fetching food items:', err);
+      setFoodItems(fallbackMenuItems);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredItems = foodItems.filter(item =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -37,7 +140,67 @@ const Menu = () => {
     setCart(newCart);
   };
 
+  const handleOrder = async () => {
+    if (cart.length === 0) return;
+    
+    if (!isLoggedIn) {
+      alert('Please login to place an order');
+      window.location.href = '/login';
+      return;
+    }
+    
+    try {
+      const token = localStorage.getItem('token');
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      
+      const order = {
+        orderItems: cart.map(item => ({
+          foodItem: { id: item.id },
+          quantity: 1,
+          price: item.price
+        })),
+        deliveryAddress: userData.address || 'Not specified',
+        contactNumber: userData.contact || 'Not specified'
+      };
+      
+      const response = await fetch('http://localhost:8080/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(order)
+      });
+      
+      if (response.ok) {
+        setCart([]);
+        alert('Order placed successfully!');
+        window.location.href = '/dashboard';
+      } else {
+        const errorText = await response.text(); 
+        console.error('Order failed:', errorText);
+        alert('Failed to place order. Please try again.');
+      }
+    } catch (error) {
+      console.error('Order error:', error);
+      alert('Failed to place order. Please try again.');
+    }
+  };
+
   const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  if (loading) {
+    return (
+      <div className="menu-page">
+        <div className="container">
+          <div className="page-title-wrapper">
+            <h1 className="page-title">Our Menu</h1>
+          </div>
+          <div className="loading-spinner">Loading menu items...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="menu-page">
@@ -49,20 +212,26 @@ const Menu = () => {
             <div className="search-bar">
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder="Search menu items..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             
             <div className="items-grid">
-              {filteredItems.map((item) => (
-                <MenuItem 
-                  key={item.id} 
-                  item={item} 
-                  onAddToCart={addToCart} 
-                />
-              ))}
+              {filteredItems.length > 0 ? (
+                filteredItems.map((item) => (
+                  <MenuItem 
+                    key={item.id} 
+                    item={item} 
+                    onAddToCart={addToCart} 
+                  />
+                ))
+              ) : (
+                <div className="no-items">
+                  <p>No menu items found{searchTerm ? ` for "${searchTerm}"` : ''}.</p>
+                </div>
+              )}
             </div>
           </div>
           
@@ -92,12 +261,25 @@ const Menu = () => {
               <span>${total.toFixed(2)}</span>
             </div>
             
-            <button 
-              className="btn order-btn" 
-              disabled={cart.length === 0}
-            >
-              Order Now
-            </button>
+            {!isLoggedIn ? (
+              <div className="login-prompt">
+                <p>Please login to place an order</p>
+                <button 
+                  className="login-btn"
+                  onClick={() => window.location.href = '/login'}
+                >
+                  Login Now
+                </button>
+              </div>
+            ) : (
+              <button 
+                className="btn order-btn" 
+                disabled={cart.length === 0}
+                onClick={handleOrder}
+              >
+                Order Now
+              </button>
+            )}
           </div>
         </div>
       </div>

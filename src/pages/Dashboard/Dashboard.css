@@ -1,9 +1,6 @@
-/* Dashboard.css */
-
-/* Page */
 .dashboard-page {
   min-height: 100vh;
-  background: #ffffff; /* Always white background */
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -12,7 +9,6 @@
   color: #333;
 }
 
-/* Container */
 .container-dash {
   width: 100%;
   max-width: 950px;
@@ -21,16 +17,19 @@
   padding: 2rem;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1.2s ease;
-  transition: all 0.3s ease;
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Header */
 .dashboard-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -41,21 +40,25 @@
   font-weight: 800;
   position: relative;
   display: inline-block;
-  color: #ff9900; /* Solid orange */
+  color: #ff9900;
   animation: floatText 4s ease-in-out infinite;
   overflow: hidden;
 }
 
-/* Smooth Floating Effect */
 @keyframes floatText {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-/* Shimmer Effect */
 .dashboard-header h1::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -71,23 +74,21 @@
 }
 
 @keyframes shimmer {
-  0%   { left: -100%; }
-  50%  { left: 100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
-
-
 
 .dashboard-header h2 {
   font-size: 1.4rem;
   letter-spacing: 2px;
   color: #555;
-}
-
-/* Glow text effect */
-@keyframes glow {
-  from { text-shadow: 0 0 10px rgb(255, 187, 0); }
-  to { text-shadow: 0 0 20px rgba(253, 153, 2, 0.6); }
 }
 
 /* Welcome Section */
@@ -98,16 +99,25 @@
 }
 
 @keyframes slideIn {
-  from { transform: translateX(-30px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-/* Reservation Card */
+.reservation-section {
+  margin-bottom: 2rem;
+}
+
 .reservation-card {
   background: #e4e3e3;
   border-radius: 15px;
   padding: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   border: 1px solid #9b9b9b;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -118,10 +128,14 @@
 }
 
 .reservation-details {
-  display: flex;
-  justify-content: space-between;
   margin-top: 1rem;
   font-size: 1rem;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .detail span:first-child {
@@ -129,7 +143,12 @@
   color: #ff6a00;
 }
 
-/* Profile Section */
+.no-reservation {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
+
 .profile-section {
   margin-bottom: 2rem;
 }
@@ -167,7 +186,6 @@
   transform: scale(1.02);
 }
 
-/* Buttons */
 .btn {
   display: inline-block;
   margin-top: 1rem;
@@ -177,45 +195,89 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
-  background-color: #ff6a00; /* Bright orange */
+  background-color: #ff6a00;
   color: #fff;
   box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #e55a00; /* Darker orange on hover */
+  background-color: #e55a00;
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(255, 106, 0, 0.5);
-}
-
-.btn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(255, 106, 0, 0.4);
 }
 
 .logout-btn {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.8rem 1.6rem;
-  border: 2px solid #ff3b3b; /* Red border */
+  border: 2px solid #ff3b3b;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
-  background-color: #fff; /* White background */
-  color: #ff3b3b; /* Red text */
+  background-color: #fff;
+  color: #ff3b3b;
   transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
-  background-color: #ff3b3b; /* Red background */
-  color: #fff; /* White text */
+  background-color: #ff3b3b;
+  color: #fff;
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(255, 59, 59, 0.4);
 }
 
-.logout-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(255, 59, 59, 0.3);
+
+.order-actions {
+  margin-top: 10px;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background-color: #e60000;
+}
+
+select {
+  padding: 4px;
+  margin-top: 5px;
+}
+
+.edit-items {
+  margin-top: 10px;
+}
+
+.edit-item-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.edit-item-row input {
+  width: 60px;
+  padding: 4px;
+}
+
+.edit-btn {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancel-btn {
+  margin-left: 10px;
+  background-color: #ccc;
 }

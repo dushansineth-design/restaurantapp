@@ -1,4 +1,3 @@
-// components/Testimonials.jsx
 import './Testimonials.css';
 
 const Testimonials = () => {

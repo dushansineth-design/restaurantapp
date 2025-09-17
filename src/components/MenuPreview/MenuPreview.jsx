@@ -1,8 +1,7 @@
-// components/MenuPreview.jsx
 import { Link } from 'react-router-dom';
 import './MenuPreview.css';
 
-// Import images
+
 import chilledChicken from '../../assets/pic2.jpg';
 import butterPrawns from '../../assets/pic16.jpg';
 import spicyRamen from '../../assets/pic14.jpg';

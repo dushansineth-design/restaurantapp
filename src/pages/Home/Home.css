@@ -1,12 +1,11 @@
-/* styles/Home.css */
 .home-page {
-  padding-top: 70px; /* To account for fixed header */
+  padding-top: 70px; 
   background: rgb(255, 255, 255)
 }
 
 .section-divider {
   border: none;
   height: 2px;
-  background-color: #0000003f; /* black line */
-  margin: 60px; /* optional spacing */
+  background-color: #0000003f;
+  margin: 60px; 
 }

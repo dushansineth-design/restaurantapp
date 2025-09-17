@@ -1,4 +1,3 @@
-// components/HeroSection.jsx
 import { Link } from 'react-router-dom';
 import './HeroSection.css';
 

@@ -1,17 +1,82 @@
-/* styles/Menu.css */
 .menu-page {
-  padding: 5px 0 50px;
+  padding: 70px 0 50px;
   min-height: 100vh;
 }
 
 
 
+.page-title-wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  margin-bottom: 30px;
+}
+
 .page-title {
   font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 30px;
-  text-align: center;
+  font-weight: 800;
+  position: relative;  
+  color: #ff9900;     
+  overflow: hidden;
+  animation: floatText 4s ease-in-out infinite; 
 }
+
+@keyframes floatText {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.page-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #000000;
+  position: relative;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+
+
 
 .menu-container {
   display: grid;
@@ -80,12 +145,13 @@
 }
 
 .remove-btn {
-  background: none;
+  background: #ff6b6b;
+  color: white;
   border: none;
-  color: var(--primary-color);
-  font-size: 1.2rem;
+  border-radius: 4px;
+  padding: 2px 6px;
   cursor: pointer;
-  padding: 0 5px;
+  margin-left: 5px;
 }
 
 .cart-total {
@@ -115,7 +181,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Shine effect */
 .order-btn::before {
   content: "";
   position: absolute;
@@ -132,19 +197,16 @@
   left: 130%;
 }
 
-/* Lift & glow on hover */
 .order-btn:hover {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 6px 20px rgb(238, 144, 2);
 }
 
-/* Click animation */
 .order-btn:active {
   transform: scale(0.96);
   box-shadow: 0 3px 8px rgb(255, 163, 24);
 }
 
-/* Disabled state */
 .order-btn:disabled {
   background: #ccc;
   color: #666;
@@ -152,7 +214,6 @@
   box-shadow: none;
 }
 
-/* Optional pulsing effect */
 @keyframes pulseOrder {
   0% {
     box-shadow: 0 0 8px rgba(255, 122, 24, 0.6);
@@ -175,4 +236,111 @@
   .cart-section {
     position: static;
   }
+}
+
+
+
+
+
+.error-message {
+  flex: 1;
+}
+
+
+.no-items {
+  text-align: center;
+  padding: 2rem;
+  grid-column: 1 / -1;
+  color: #666;
+}
+
+.no-items {
+  text-align: center;
+  padding: 2rem;
+  grid-column: 1 / -1;
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .error-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .retry-btn {
+    align-self: center;
+  }
+}
+
+.login-prompt {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.login-prompt p {
+  margin-bottom: 0.5rem;
+  color: #6c757d;
+}
+
+.login-prompt .login-btn {
+  background: linear-gradient(135deg, #ff7a18, #d87a00) !important; 
+  color: #ffffff !important;  /* White text */
+  border: none !important;
+  padding: 0.6rem 1.2rem;
+  display: inline-block;
+  width: 250px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-prompt .login-btn:hover {
+  background: linear-gradient(135deg, #ff8c42, #e68900) !important; 
+  transform: translateY(-2px);
+}
+
+.login-prompt .login-btn:active {
+  background: linear-gradient(135deg, #cc6600, #a64b00) !important; 
+  transform: scale(0.96);
+}
+
+
+.login-btn:hover {
+  background-color: #dfca12; 
+  transform: translateY(-2px); 
+}
+
+.login-btn:active {
+  background-color: #9c4a00; 
+  transform: scale(0.95);    
+}
+
+.login-btn:disabled {
+  background-color: #ccc; 
+  color: #666;            
+  cursor: not-allowed;
+}
+
+.quantity-btn {
+  background: #f0f0f0;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-item-quantity {
+  min-width: 20px;
+  text-align: center;
 }

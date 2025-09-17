@@ -1,4 +1,3 @@
-// components/ReservationSteps.jsx
 import { Link } from 'react-router-dom';
 import './ReservationSteps.css';
 

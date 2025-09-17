@@ -12,30 +12,20 @@
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Visible/Hidden States */
-/*.header.visible {
-  transform: translateY(0);
-}
 
-.header.hidden {
-  transform: translateY(-100%);
-}*/
 
-/* Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Logo - Enhanced */
 .logo {
   font-size: 2.5rem;
   font-weight: 800;
@@ -44,7 +34,6 @@
   position: relative;
   padding: 0rem 0;
 
-  /* Stronger shiny gradient */
   background: linear-gradient(
     90deg,
     #ffffff 0%,
@@ -59,7 +48,6 @@
   animation: shineText 5s linear infinite;
 }
 
-/* Underline hover */
 .logo::after {
   content: '';
   position: absolute;
@@ -86,7 +74,6 @@
 
 
 
-/* Navigation Links - Enhanced Animations */
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -127,7 +114,6 @@
   transform-origin: left;
 }
 
-/* Button Link - Enhanced */
 .nav-link.btn {
   position: relative;
   background: linear-gradient(135deg, #ff8a00, #b38300);
@@ -166,7 +152,6 @@
   z-index: 2;
 }
 
-/* Hamburger Menu - Enhanced */
 .hamburger {
   display: none;
   background: none;
@@ -186,7 +171,6 @@
   transform-origin: center;
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
@@ -250,7 +234,78 @@
   }
 }
 
-/* Add this to your Header.jsx for the mobile menu animation delays */
-/* Add this to your nav-link mapping:
-style={{ '--i': index }}
-*/
+
+.user-welcome {
+  color: #bdbdbd;
+  font-weight: 600;
+  cursor: default;
+  padding: 0.5rem 1rem;
+}
+
+.user-welcome:hover {
+  background-color: transparent;
+  color: #ffd27f;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white !important;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-link.btn:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .user-welcome {
+    order: -1; 
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,8 +1,5 @@
-/* Signup.css */
-
-/* Full page background */
 .signup-page {
-  min-height: 100vh;
+  min-height: 150vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +8,6 @@
   overflow: hidden;
 }
 
-/* Dark overlay for readability */
 .signup-page::before {
   content: "";
   position: absolute;
@@ -21,7 +17,6 @@
   z-index: 0;
 }
 
-/* Glass Effect Container */
 .signup-container {
   position: relative;
   z-index: 1;
@@ -48,7 +43,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Form Groups */
 .signup-form .form-group {
   margin-bottom: 1.3rem;
   text-align: left;
@@ -61,9 +55,8 @@
   display: block;
 }
 
-/* Make inputs and button aligned */
 .signup-form input,
-.signup-btn {
+.signup-form textarea {
   width: 100%;
   display: block;
   padding: 0.9rem;
@@ -72,22 +65,36 @@
   outline: none;
   font-size: 1rem;
   box-sizing: border-box;
-}
-
-/* Input fields */
-.signup-form input {
   margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
   transition: 0.3s ease;
+  font-family: inherit; 
 }
 
-.signup-form input:focus {
+.signup-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
   background: rgba(255, 255, 255, 0.28);
   box-shadow: 0 0 10px #ff8a00;
 }
 
-/* Button */
+.signup-form input:disabled,
+.signup-form textarea:disabled {
+  background-color: rgba(245, 245, 245, 0.3);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.signup-form input::placeholder,
+.signup-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .signup-btn {
   margin-top: 0.5rem;
   background: linear-gradient(135deg, #ff8a00, rgba(255, 106, 0, 0.3));
@@ -95,6 +102,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.3s ease;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .signup-btn:hover {
@@ -102,7 +116,13 @@
   box-shadow: 0 0 15px #ff8a00;
 }
 
-/* Link to login */
+.signup-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .signup-link {
   margin-top: 1.5rem;
   font-size: 0.9rem;
@@ -119,7 +139,16 @@
   color: #ff8a00;
 }
 
-/* Fade-in Animation */
+.error-message {
+  color: #ff5252;
+  background-color: rgba(255, 235, 238, 0.2);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 205, 210, 0.3);
+  backdrop-filter: blur(5px);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -1,13 +1,12 @@
-/* MenuItem.css */
 .menu-item-card {
-  background: #fff; /* Changed from #f8f9fa to white for better contrast */
+  background: #fff; 
   border-radius: 8px;
-  overflow: hidden; /* Important for image containment */
+  overflow: hidden; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  height: 100%; /* Ensures consistent card heights */
+  height: 100%; 
 }
 
 .menu-item-card:hover {
@@ -16,24 +15,24 @@
 }
 
 .menu-item-image {
-  height: 180px; /* Fixed height for images */
+  height: 180px; 
   overflow: hidden;
 }
 
 .menu-item-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures images fill the space properly */
+  object-fit: cover; 
   transition: var(--transition);
 }
 
 .menu-item-card:hover .menu-item-image img {
-  transform: scale(1.05); /* Subtle zoom effect on hover */
+  transform: scale(1.05); 
 }
 
 .item-info {
   padding: 15px;
-  flex-grow: 1; /* Pushes button to bottom */
+  flex-grow: 1; 
   display: flex;
   flex-direction: column;
 }
@@ -74,7 +73,6 @@
   overflow: hidden;
   z-index: 1;
   
-  /* Smooth animations */
   transition: all 0.35s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
@@ -106,7 +104,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Optional glow effect */
 .add-to-cart-btn:hover {
   animation: pulseGlow 1.5s infinite alternate;
 }
@@ -121,7 +118,6 @@
 }
 
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .menu-item-image {
     height: 150px;
