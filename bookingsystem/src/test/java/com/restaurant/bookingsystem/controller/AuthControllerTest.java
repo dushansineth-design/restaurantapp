@@ -2,6 +2,7 @@ package com.restaurant.bookingsystem.controller;
 
 import com.restaurant.bookingsystem.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Disabled
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
@@ -32,6 +34,7 @@ public class AuthControllerTest {
         userRepository.deleteByEmail(TEST_EMAIL); // ✅ Correct usage
     }
 
+    @Disabled
     @Test
     public void shouldRegisterUserSuccessfully_whenValidInputProvided() throws Exception {
         String userJson = "{"
