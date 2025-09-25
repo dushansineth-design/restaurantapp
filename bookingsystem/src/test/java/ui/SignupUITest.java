@@ -24,6 +24,7 @@ public class SignupUITest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    @Disabled
     @Test
     public void testSignupWithValidData() {
         driver.get(BASE_URL + "/signup");

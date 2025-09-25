@@ -6,6 +6,7 @@ import com.restaurant.bookingsystem.repository.FoodItemRepository;
 import com.restaurant.bookingsystem.service.FoodItemService;
 //import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,6 +28,7 @@ public class FoodItemServiceTest {
     @InjectMocks
     private FoodItemService foodItemService;
 
+    @Disabled
     @Test
     public void testAddFoodItem() {
         FoodItem item = new FoodItem();

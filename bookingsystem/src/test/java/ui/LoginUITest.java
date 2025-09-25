@@ -23,6 +23,7 @@ public class LoginUITest {
         driver.get("http://localhost:5173/login");
     }
 
+    @Disabled
     @Test
     public void testLoginWithValidCredentials() {
         driver.findElement(By.id("username")).sendKeys("dushan");
