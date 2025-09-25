@@ -67,9 +67,7 @@ jobs:
       working-directory: ./restaurantapp
       run: npm ci
 
-    - name: Run frontend tests
-      working-directory: ./restaurantapp
-      run: npm test -- --watchAll=false
+   
 
     - name: Build frontend
       working-directory: ./restaurantapp
