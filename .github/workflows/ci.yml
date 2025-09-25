@@ -51,8 +51,7 @@ jobs:
 
     - name: Build and test backend
       working-directory: ./bookingsystem
-      run: |
-        ./mvnw clean install
+      run: mvn clean install
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
